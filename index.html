@@ -27,40 +27,52 @@
                 </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                        Collapsible Group Item #2
-                    </a>
-                </h5>
-            </div>
-            <div id="collapseTwo" class="collapse">
-                <div class="card-block">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                        Collapsible Group Item #3
-                    </a>
-                </h5>
-            </div>
-            <div id="collapseThree" class="collapse">
-                <div class="card-block">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
-            </div>
-        </div>
     </div>
 
 </div>
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+<script src="js/jquery.js"></script>
 <script src="js/dist/util.js"></script>
 <script src="js/dist/collapse.js"></script>
+<script type="text/javascript">
+    $(function () {
+        if (window.localStorage) {
+            var data = {
+                "a": "11",
+                "b": "22",
+                "c": "33",
+                "d": "44",
+                "e": "55"
+            };
+            var local = window.localStorage;
+            for (var i in data) {
+                local.setItem(i, data[i])
+            }
+            var html = '';
+            for (var i = 0; i < local.length; i++) {
+                var key = local.key(i);
+                var val = local.getItem(key)
+                var h =
+                    '<div class="card">' +
+                    '<div class="card-header">' +
+                    '<h5 class="mb-0">' +
+                    '<a role="button" data-toggle="collapse" data-parent="#accordion" href="#'+key+'">' + key +
+                    '</a>' +
+                    '</h5>' +
+                    '</div>' +
+                    '<div id=' + key + ' class="collapse">' +
+                    '<div class="card-block">' + val +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+                html += h;
+                console.log(val)
+            }
+            $('#accordion').append(html);
+        } else {
+            alert("no support localStorage!!!!")
+        }
+    })
+</script>
 </body>
 </html>
