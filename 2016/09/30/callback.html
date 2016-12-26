@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function test(fn) {
+            console.log('tset begin...');
+//            console.log('tset end...');
+            return fn();
+        }
+        console.log(test(function () {
+            console.log('wocao');
+            return 111;
+        }));
+    </script>
+</head>
+<body>
+
+</body>
+</html>
