@@ -13,7 +13,7 @@
 <div class="container">
     <h1 class="text-info">Learn English</h1>
     <div id="accordion">
-        <div class="card">
+        <div hidden class="card">
             <div class="card-header">
                 <h5 class="mb-0">
                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
@@ -28,7 +28,6 @@
             </div>
         </div>
     </div>
-
 </div>
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
 <script src="js/jquery.js"></script>
@@ -36,42 +35,48 @@
 <script src="js/dist/collapse.js"></script>
 <script type="text/javascript">
     $(function () {
-        if (window.localStorage) {
-            var data = {
-                "a": "11",
-                "b": "22",
-                "c": "33",
-                "d": "44",
-                "e": "55"
-            };
-            var local = window.localStorage;
-            for (var i in data) {
-                local.setItem(i, data[i])
+        try{
+            if (window.localStorage) {
+                var data = {
+                    "Interpreter": "Interpreter,Interpreter,Interpreter,Interpreter,",
+                    "specify ": "specify specify specify specify specify specify specify ",
+                    "characters ": "characters  characters characters ",
+                    "comment ": "comment comment comment comment comment comment ",
+                    "executable ": "executable executable executable executable 5"
+                };
+                var local = window.localStorage;
+                local.clear();
+                for (var i in data) {
+                    local.setItem(i, data[i])
+                }
+                var html = '';
+                for (var i = 0; i < local.length; i++) {
+                    var key = local.key(i);
+                    var val = local.getItem(key)
+                    var h =
+                        '<div class="card">' +
+                        '<div class="card-header">' +
+                        '<h5 class="mb-0">' +
+                        '<a role="button" data-toggle="collapse" data-parent="#accordion" href="#' + key + '">' + key +
+                        '</a>' +
+                        '</h5>' +
+                        '</div>' +
+                        '<div id=' + key + ' class="collapse">' +
+                        '<div class="card-block">' + val +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+                    html += h;
+                }
+                $('#accordion').append(html);
+            } else {
+                alert("no support localStorage!!!!")
             }
-            var html = '';
-            for (var i = 0; i < local.length; i++) {
-                var key = local.key(i);
-                var val = local.getItem(key)
-                var h =
-                    '<div class="card">' +
-                    '<div class="card-header">' +
-                    '<h5 class="mb-0">' +
-                    '<a role="button" data-toggle="collapse" data-parent="#accordion" href="#'+key+'">' + key +
-                    '</a>' +
-                    '</h5>' +
-                    '</div>' +
-                    '<div id=' + key + ' class="collapse">' +
-                    '<div class="card-block">' + val +
-                    '</div>' +
-                    '</div>' +
-                    '</div>';
-                html += h;
-                console.log(val)
-            }
-            $('#accordion').append(html);
-        } else {
-            alert("no support localStorage!!!!")
+        }catch (e){
+            alert('出错了');
+            throw new Error(10,e);
         }
+
     })
 </script>
 </body>
