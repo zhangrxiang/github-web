@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="mui/css/mui.css" type="text/css">
+    <script src="mui/js/jquery-1.11.1.js" type="text/javascript"></script>
+    <script src="mui/js/mui.js" type="text/javascript"></script>
+    <script src="mui/js/zrx-get-data.js" type="text/javascript"></script>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-icon mui-icon-bars mui-pull-left mui-plus-visible"></a>
+    <a id="info" class="mui-icon mui-icon-info-filled mui-pull-right" style="color: #999;"></a>
+    <h1 class="mui-title">从PC端获取WP数据</h1>
+</header>
+<div class="mui-content">
+    <div class="mui-card">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#">获取所有文章</a>
+                <div class="mui-collapse-content">
+                    <form class="mui-input-group">
+                        <div class="mui-input-row">
+                            <label>输入URL地址</label>
+                            <input type="text" name="url" class="url" placeholder="输入URL地址" value="http://wp4.6.dev/">
+                        </div>
+                        <div class="mui-button-row">
+                            <button class="mui-btn mui-btn-primary" type="button" onclick="getAllPost()">确认</button>
+                            &nbsp;&nbsp;
+                            <button class="mui-btn mui-btn-primary" type="button" onclick="return false;">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            <li class="mui-table-view-cell mui-collapse">
+                <a class="mui-navigate-right" href="#">表单</a>
+                <div class="mui-collapse-content">
+                    <form class="mui-input-group">
+                        <div class="mui-input-row">
+                            <label>输入URL地址</label>
+                            <input type="text" name="url" placeholder="输入URL地址" value="http://wp4.6.dev/">
+                        </div>
+                        <div class="mui-input-row">
+                            <label>Input</label>
+                            <input type="text" class="mui-input-clear" placeholder="带清除按钮的输入框"
+                                   data-input-clear="3"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                        </div>
+
+                        <div class="mui-input-row mui-plus-hidden">
+                            <label>Input</label>
+                            <input type="text" class="mui-input-speech mui-input-clear" placeholder="语音输入"
+                                   data-input-clear="4" data-input-speech="4"><span
+                                class="mui-icon mui-icon-clear mui-hidden"></span><span
+                                class="mui-icon mui-icon-speech"></span>
+                        </div>
+                        <div class="mui-button-row">
+                            <button class="mui-btn mui-btn-primary" type="button" onclick="return false;">确认</button>
+                            &nbsp;&nbsp;
+                            <button class="mui-btn mui-btn-primary" type="button" onclick="return false;">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            <li class="mui-table-view-cell mui-collapse">
+                <a class="mui-navigate-right" href="#">表单</a>
+                <div class="mui-collapse-content">
+                    <form class="mui-input-group">
+                        <div class="mui-input-row">
+                            <label>输入URL地址</label>
+                            <input type="text" name="url" placeholder="输入URL地址" value="http://wp4.6.dev/">
+                        </div>
+                        <div class="mui-input-row">
+                            <label>Input</label>
+                            <input type="text" class="mui-input-clear" placeholder="带清除按钮的输入框"
+                                   data-input-clear="3"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                        </div>
+
+                        <div class="mui-input-row mui-plus-hidden">
+                            <label>Input</label>
+                            <input type="text" class="mui-input-speech mui-input-clear" placeholder="语音输入"
+                                   data-input-clear="4" data-input-speech="4"><span
+                                class="mui-icon mui-icon-clear mui-hidden"></span><span
+                                class="mui-icon mui-icon-speech"></span>
+                        </div>
+                        <div class="mui-button-row">
+                            <button class="mui-btn mui-btn-primary" type="button" onclick="return false;">确认</button>
+                            &nbsp;&nbsp;
+                            <button class="mui-btn mui-btn-primary" type="button" onclick="return false;">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            <li class="mui-table-view-cell mui-collapse">
+            <a class="mui-navigate-right" href="#">表单</a>
+            <div class="mui-collapse-content">
+                <form class="mui-input-group">
+                    <div class="mui-input-row">
+                        <label>输入URL地址</label>
+                        <input type="text" name="url" placeholder="输入URL地址" value="http://wp4.6.dev/">
+                    </div>
+                    <div class="mui-input-row">
+                        <label>Input</label>
+                        <input type="text" class="mui-input-clear" placeholder="带清除按钮的输入框"
+                               data-input-clear="3"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                    </div>
+
+                    <div class="mui-input-row mui-plus-hidden">
+                        <label>Input</label>
+                        <input type="text" class="mui-input-speech mui-input-clear" placeholder="语音输入"
+                               data-input-clear="4" data-input-speech="4"><span
+                            class="mui-icon mui-icon-clear mui-hidden"></span><span
+                            class="mui-icon mui-icon-speech"></span>
+                    </div>
+                    <div class="mui-button-row">
+                        <button class="mui-btn mui-btn-primary" type="button" onclick="return false;">确认</button>
+                        &nbsp;&nbsp;
+                        <button class="mui-btn mui-btn-primary" type="button" onclick="return false;">取消</button>
+                    </div>
+                </form>
+            </div>
+        </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

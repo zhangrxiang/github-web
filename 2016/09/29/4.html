@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        p:before{content: "~ "}
+        p:nth-child(even){
+            color: rebeccapurple;
+            /*background: -moz-linear-gradient(top,#ccc,#000);*/
+            /*background: linear-gradient(right,#95a5a6,#ffffff);*/
+            /*background: -webkit-linear-gradient(left, #ffffff,#d35400);*/
+            background: radial-gradient(#eeeeee,#d35400, #8dd398, #ffffff,#d35400);
+        }
+        p:nth-child(odd){
+            color: #38a4a6;
+            background: -webkit-linear-gradient(left, #ffffff,#d35400);
+        }
+        p{
+            font-family: Consolas;
+            -webkit-margin-before: 0em;
+            -webkit-margin-after: 0em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    function alert(){
+        for (var i in arguments){
+            document.write('<p>'+arguments[i]+'</p>');
+        }
+    }
+    var global = (function () {
+        return this;
+    }());
+
+    var a = (function () {
+        alert('aaa')
+    })();
+    var b = (function () {
+        alert('bbb')
+    }());(function () {
+        alert('aaa')
+    })();
+    alert(global);//window
+
+    myname = "global"; // 全局变量
+    function func() {
+        alert(myname); // "undefined"
+        var myname = "local";
+        alert(myname); // "local"
+    }
+    func();
+
+</script>
