@@ -28,47 +28,53 @@
             </div>
         </div>
     </div>
+    <ul class="pagination">
+        <!--<li class="disabled page-item"><a class="page-link" href="#">&laquo;</a></li>-->
+        <!--<li class="active page-item"><a class="page-link" href="#1">1 <span class="sr-only">(current)</span></a></li>-->
+        <!--<li class="page-item"><a class="page-link" href="#2">2 <span class="sr-only">(current)</span></a></li>-->
+        <!--<li class="page-item"><a class="page-link" href="#3">3 <span class="sr-only">(current)</span></a></li>-->
+        <!--<li class="page-item"><a class="page-link" href="#4">4 <span class="sr-only">(current)</span></a></li>-->
+        <!--<li class="disabled page-item"><a class="page-link" href="#">»</a></li>-->
+
+    </ul>
 </div>
+
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
 <script src="js/data.js"></script>
 <script src="js/jquery.js"></script>
 <script src="js/dist/util.js"></script>
 <script src="js/dist/collapse.js"></script>
 <script type="text/javascript">
+
     $(function () {
+        var location = getLocation();
+        console.log(location);
+        var href = location[0];
+        var p = location[1];
+        if(p === undefined){
+            p = "value=1";
+        }
+        console.log(p);
+        var max = 10;
         try{
             if (window.localStorage) {
-                var data1 = {
-                    "Interpreter": "Interpreter,Interpreter,Interpreter,Interpreter,",
-                    "specify ": "specify specify specify specify specify specify specify ",
-                    "characters ": "characters  characters characters ",
-                    "comment ": "comment comment comment comment comment comment ",
-                    "executable ": "executable executable executable executable 5"
-                };
                 var local = window.localStorage;
                 local.clear();
-                for (var i in data) {
-                    local.setItem(i, data[i])
+                put(local,data);
+                var length = local.length;
+                var size = Math.ceil(length / 10);
+                var pagination = "";
+                var active = "";
+                var page = p.split("=")[1];
+                for (var s = 0; s < size; s++){
+                    if((s+1) == page) active ="active ";
+                    else active = "";
+                    pagination+=
+                        '<li class="'+active+'page-item"><a class="page-link" href="' + href+"&value="+(s+1)+ '">' + (s+1) + ' <span class="sr-only">(current)</span></a></li>'
                 }
-                var html = '';
-                for (var i = 0; i < local.length; i++) {
-                    var key = local.key(i);
-                    var val = local.getItem(key)
-                    var h =
-                        '<div class="card">' +
-                        '<div class="card-header">' +
-                        '<h5 class="mb-0">' +
-                        '<a role="button" data-toggle="collapse" data-parent="#accordion" href="#' + key + '">' + key +
-                        '</a>' +
-                        '</h5>' +
-                        '</div>' +
-                        '<div id=' + key + ' class="collapse">' +
-                        '<div class="card-block">' + val +
-                        '</div>' +
-                        '</div>' +
-                        '</div>';
-                    html += h;
-                }
+                $(".pagination").append(pagination);
+                console.log(size);
+                var html = get(local,page,max);
                 $('#accordion').append(html);
             } else {
                 alert("no support localStorage!!!!")
@@ -78,7 +84,64 @@
             throw new Error(10,e);
         }
 
-    })
+    });
+
+    function put(local,data) {
+        var index = 1;
+        for (var i in data) {
+            local.setItem((index++).toString(), i+"##"+data[i]);
+        }
+    }
+    function get(local,page,max) {
+        var html = '';
+        console.log("page "+page);
+        for(var j = (page-1)*10+1; j < page*10+1; j++){
+            var index = local.key(j.toString());
+            console.log("index "+j.toString());
+            var item = local.getItem(index);
+            console.log(item);
+            var k = item.split("##")[0];
+            var v = item.split("##")[1];
+            html +=
+                '<div class="card">' +
+                '<div class="card-header">' +
+                '<h5 class="mb-0">' +
+                '<i>'+index+'</i> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#' + k + '">' + k +
+                '</a>' +
+                '</h5>' +
+                '</div>' +
+                '<div id=' + k + ' class="collapse">' +
+                '<div class="card-block">' + v +
+                '</div>' +
+                '</div>' +
+                '</div>';
+        }
+//        for (var i = 0; i < local.length; i++) {
+//            var key = local.key(i);
+//            var val = local.getItem(key);
+//             html +=
+//                '<div class="card">' +
+//                '<div class="card-header">' +
+//                '<h5 class="mb-0">' +
+//                '<a role="button" data-toggle="collapse" data-parent="#accordion" href="#' + key + '">' + key +
+//                '</a>' +
+//                '</h5>' +
+//                '</div>' +
+//                '<div id=' + key + ' class="collapse">' +
+//                '<div class="card-block">' + val +
+//                '</div>' +
+//                '</div>' +
+//                '</div>';
+//        }
+        return html;
+    }
+
+    function getLocation(){
+        var url = document.location.href;
+        url = url.split("&");
+        return url;
+    }
+
 </script>
 </body>
 </html>
