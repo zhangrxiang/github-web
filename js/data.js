@@ -35,8 +35,14 @@ var data = {
     "Forum":"A Forum topic defines a topic for a forum discussion; people can reply to the topic by using comments. Forum nodes are organized into subject areas via a Taxonomy (list of categories).",
     "poll":"A poll is a question with a set of possible responses. Once created, a poll automatically provides a simple running count of the number of votes received for each response.",
     "organize":"First, content types lets you organize your site more efficiently. ",
-
-
+    "parses":"The API module parses documentation and code in PHP files, and it expects documentation to be in a format similar to other code/documentation parsing systems such as PHPDoc, JavaDoc, etc.",
+    "originally-evolved":"It was originally based on Doxygen, but it has evolved into something that has its own set of tags and a lot of Drupal-specific functionality.",
+    "treats ":"The API module treats files with the following extensions as PHP: .php, .module, .inc, .install, .engine., .theme, .profile, and .test.",
+    "In-code":"In-code comment lines starting with // and comment blocks starting with /* are not recognized as docblocks.",
+    "normally":"Docblocks normally have * at the beginning of each line, and the API module strips these out when formatting the documentation (see example above).",
+    "summary":"The first paragraph of a docblock is known as the summary.",
+    "automatically":"The API module automatically turns the names of functions, classes, etc. that it recognizes in documentation text into links to the documentation of those items.",
+    "related ":"This section contains standards related to all API docblocks.",
 
 
 };
