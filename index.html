@@ -12,6 +12,7 @@
 <body>
 <div class="container">
     <h1 class="text-info">Learn English</h1>
+    <h5>now is <i id="time">20170109</i></h5>
     <div id="accordion">
         <div hidden class="card">
             <div class="card-header">
@@ -29,13 +30,6 @@
         </div>
     </div>
     <ul class="pagination">
-        <!--<li class="disabled page-item"><a class="page-link" href="#">&laquo;</a></li>-->
-        <!--<li class="active page-item"><a class="page-link" href="#1">1 <span class="sr-only">(current)</span></a></li>-->
-        <!--<li class="page-item"><a class="page-link" href="#2">2 <span class="sr-only">(current)</span></a></li>-->
-        <!--<li class="page-item"><a class="page-link" href="#3">3 <span class="sr-only">(current)</span></a></li>-->
-        <!--<li class="page-item"><a class="page-link" href="#4">4 <span class="sr-only">(current)</span></a></li>-->
-        <!--<li class="disabled page-item"><a class="page-link" href="#">»</a></li>-->
-
     </ul>
 </div>
 
@@ -47,6 +41,9 @@
 <script type="text/javascript">
 
     $(function () {
+        setInterval(function () {
+            $("#time").html(new Date())
+        },1000);
         var location = getLocation();
         console.log(location);
         var href = location[0];
