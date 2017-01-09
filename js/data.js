@@ -15,7 +15,23 @@ var data = {
     "particular":"Drupal allows each module to define paths that the module will be responsible for, and when you choose to visit a particular path Drupal asks the module what should be displayed on the page.",
     "Bootstrap":"The bootstrap is the CPU (central processing unit) of Drupal",
     "Permissions":"Permissions can be set to control what users have access to view and/or edit particular areas of a site.",
-    "pertain to":"These permissions pertain to registered users (i.e.: administrators, content editors, site members) and non-registered users. ",
+    "pertain-to":"These permissions pertain to registered users (i.e.: administrators, content editors, site members) and non-registered users. ",
+    "consider":"Every visitor to your site, whether they have an account and log in or visit the site anonymously, is considered a user to Drupal. Every user also has a numeric user ID special to the type of user.",
+    "Anonymous":"If user is not logged in then user is consider as Anonymous user having user ID 0. Otherwise Drupal site visitor has a user id greater then 0. User ID 1 is reserved for Administrator. This is also called master Administrator.",
+    "assign":"These users are assigned a user ID when they register for the website.",
+    "associate":"Other information can also be associated with users by modules",
+    "individual":"In some cases, like for your own computer or for some FTP logins, these \"users\" are individual people. ",
+    "compatible":"MySQL and PostgreSQL are the best supported database programs compatible with Drupal.",
+    "privilege":"so when you set up a new Drupal site, you (or your web hosting company) create a database user with full privileges and then give the user name and password to the Drupal installation so that Drupal will have full control over the database",
+    "prompt":"so when you set up a new Drupal site, you (or your web hosting company) create a database user with full privileges and then give the user name and password to the Drupal installation so that Drupal will have full control over the database",
+    "responsibility":"User/1 shouldn't be associated with an individual person, but rather with the person or persons who have the responsibility for keeping software up-to-date on your site.",
+    "awkward":"That is so because it is awkward when responsibility for site maintenance done as User/1 needs to change to a new person if the original User/1 wrote content that still needs to be associated with him/her.",
+    "navigate":"Other users on your site can be assigned permissions via roles. To do this, you first need to create a role by navigating to people --> permissions --> role.",
+    "certain":" Finally, you will grant certain users on your site your new role, which will mean that when those users are logged in, Drupal will let them do the actions you gave that role permission to do.",
+    "process":"use this process to add a new or existing field with different field types (such as Image, Tags field etc.) to the user profile:",
+    "Alternatively":"(Alternatively, use the direct path in the URL: /admin/config/people/accounts/fields)."
+
+
 
 
 };
