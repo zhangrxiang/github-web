@@ -52,7 +52,7 @@
         var href = location[0];
         var p = location[1];
         if(p === undefined){
-            p = "value=1";
+            p = "&value=1";
         }
         console.log(p);
         var max = 10;
@@ -138,9 +138,8 @@
 
     function getLocation(){
         var url = document.location.href;
-        if(!url.indexOf("?")){
-            url+="?"
-        }
+        if(url[url.lastIndexOf("/")+1] != "?")
+            url+="?";
         url = url.split("&");
         return url;
     }
