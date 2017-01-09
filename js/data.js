@@ -10,5 +10,12 @@ var data = {
     "Module":"Core modules are those included with the main download of Drupal. These can be turned on or off without downloading additional components. Examples include Blog, Book, Poll, or Taxonomy.Contributed modules are downloaded from the Modules download section of drupal.org, and installed within your Drupal installation. Examples include Panels, Views or Metatag.Custom modules are modules you write yourself. This requires a thorough understanding of Drupal, PHP programming, and Drupal's API.",
     "Regions ":"Pages on your Drupal site are laid out in Regions. ",
     "Blocks ":"Blocks are discrete chunks of information that are displayed in the regions of your site's pages.",
-    "Menus":"The Main menu is built by site administrators and displayed automatically in the page header of many themes (and if not, you can enable their blocks to display them).Management is the administration menu, and is presented in the Admin toolbar.Navigation is a catch-all menu that usually contains links supplied by modules on your site.User menu contains links to the User account and the logout link."
+    "Menus":"The Main menu is built by site administrators and displayed automatically in the page header of many themes (and if not, you can enable their blocks to display them).Management is the administration menu, and is presented in the Admin toolbar.Navigation is a catch-all menu that usually contains links supplied by modules on your site.User menu contains links to the User account and the logout link.",
+    "separate":"The Theme layer is separate from the data layer, the functionality extension layer (module) and Core",
+    "particular":"Drupal allows each module to define paths that the module will be responsible for, and when you choose to visit a particular path Drupal asks the module what should be displayed on the page.",
+    "Bootstrap":"The bootstrap is the CPU (central processing unit) of Drupal",
+    "Permissions":"Permissions can be set to control what users have access to view and/or edit particular areas of a site.",
+    "pertain to":"These permissions pertain to registered users (i.e.: administrators, content editors, site members) and non-registered users. ",
+
+
 };
