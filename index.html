@@ -138,7 +138,7 @@
 
     function getLocation(){
         var url = document.location.href;
-        if(url[url.lastIndexOf("/")+1] != "?")
+        if(url[url.lastIndexOf("/") + 1] != "?")
             url+="?";
         url = url.split("&");
         return url;
