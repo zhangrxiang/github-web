@@ -29,7 +29,12 @@ var data = {
     "navigate":"Other users on your site can be assigned permissions via roles. To do this, you first need to create a role by navigating to people --> permissions --> role.",
     "certain":" Finally, you will grant certain users on your site your new role, which will mean that when those users are logged in, Drupal will let them do the actions you gave that role permission to do.",
     "process":"use this process to add a new or existing field with different field types (such as Image, Tags field etc.) to the user profile:",
-    "Alternatively":"(Alternatively, use the direct path in the URL: /admin/config/people/accounts/fields)."
+    "Alternatively":"(Alternatively, use the direct path in the URL: /admin/config/people/accounts/fields).",
+    "various":"In Drupal, each item of content is called a node, and each node belongs to a single content type, which defines various default settings for nodes of that type, such as whether the node is published automatically and whether comments are permitted. ",
+    "frequently":"Articles are generally used for information that is updated more frequently and often cross-referenced and categorized (such as news items or resources).",
+    "Forum":"A Forum topic defines a topic for a forum discussion; people can reply to the topic by using comments. Forum nodes are organized into subject areas via a Taxonomy (list of categories).",
+    "poll":"A poll is a question with a set of possible responses. Once created, a poll automatically provides a simple running count of the number of votes received for each response.",
+    "organize":"First, content types lets you organize your site more efficiently. ",
 
 
 
