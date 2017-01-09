@@ -11,8 +11,8 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="text-info">Learn English</h1>
-    <h5>now is <i id="time">20170109</i></h5>
+    <h1 class="text-info">Learn English<sup id="count" class="text-success"></sup></h1>
+    <h5>now is <i id="time">Mon Jan 09 2017 18:15:26 GMT+0800 (中国标准时间)</i></h5>
     <div id="accordion">
         <div hidden class="card">
             <div class="card-header">
@@ -59,6 +59,7 @@
                 local.clear();
                 put(local,data);
                 var length = local.length;
+                $("#count").text(length);
                 var size = Math.ceil(length / 10);
                 var pagination = "";
                 var active = "";
