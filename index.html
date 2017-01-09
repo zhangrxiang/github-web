@@ -98,23 +98,25 @@
         for(var j = (page-1)*10+1; j < page*10+1; j++){
             var index = local.key(j.toString());
             console.log("index "+j.toString());
-            var item = local.getItem(index);
-            console.log(item);
-            var k = item.split("##")[0];
-            var v = item.split("##")[1];
-            html +=
-                '<div class="card">' +
-                '<div class="card-header">' +
-                '<h5 class="mb-0">' +
-                '<i>'+index+'</i> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#' + k + '">' + k +
-                '</a>' +
-                '</h5>' +
-                '</div>' +
-                '<div id=' + k + ' class="collapse">' +
-                '<div class="card-block">' + v +
-                '</div>' +
-                '</div>' +
-                '</div>';
+            if(index!=null){
+                var item = local.getItem(index);
+                console.log(item);
+                var k = item.split("##")[0];
+                var v = item.split("##")[1];
+                html +=
+                    '<div class="card">' +
+                    '<div class="card-header">' +
+                    '<h5 class="mb-0">' +
+                    '<i>'+index+'</i> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#' + k + '">' + k +
+                    '</a>' +
+                    '</h5>' +
+                    '</div>' +
+                    '<div id=' + k + ' class="collapse">' +
+                    '<div class="card-block">' + v +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+            }
         }
 //        for (var i = 0; i < local.length; i++) {
 //            var key = local.key(i);
