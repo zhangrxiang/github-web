@@ -287,9 +287,9 @@ wx.ready(function () {
     wx.previewImage({
       current: 'http://img5.douban.com/view/photo/photo/public/p1353993776.jpg',
       urls: [
-        'http://img3.douban.com/view/photo/photo/public/p2152117150.jpg',
-        'http://img5.douban.com/view/photo/photo/public/p1353993776.jpg',
-        'http://img3.douban.com/view/photo/photo/public/p2152134700.jpg'
+        'https://raw.githubusercontent.com/zhangrxiang/zhangrxiang.github.io/master/mui/examples/hello-mui/images/yuantiao.jpg.github.io/blob/master/mui/examples/hello-mui/images/yuantiao.jpg?raw=true',
+        'https://raw.githubusercontent.com/zhangrxiang/zhangrxiang.github.io/master/mui/examples/hello-mui/images/yuantiao.jpg',
+        'https://avatars1.githubusercontent.com/u/11625343'
       ]
     });
   };
