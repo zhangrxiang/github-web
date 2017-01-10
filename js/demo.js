@@ -351,9 +351,11 @@ wx.ready(function () {
     wx.getNetworkType({
       success: function (res) {
         alert(res.networkType);
+        alert("getNetworkType success")
       },
       fail: function (res) {
         alert(JSON.stringify(res));
+        alert("getNetworkType fail")
       }
     });
   };
