@@ -37,6 +37,7 @@ wx.ready(function () {
       },
       success: function (res) {
         alert('已分享');
+        alert(this.title);
       },
       cancel: function (res) {
         alert('已取消');
@@ -60,6 +61,7 @@ wx.ready(function () {
       },
       success: function (res) {
         alert('已分享');
+          alert(this.title);
       },
       cancel: function (res) {
         alert('已取消');
