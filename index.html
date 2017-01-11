@@ -8,13 +8,14 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
     <style>
         .time{margin: 0 5px}
     </style>
 </head>
 <body>
 <div class="container">
-    <h1 class="text-info">Learn English<span id="count" class="text-success time"></span></h1>
+    <h1 class="text-info">Learn English<span id="count" class="text-success time"></span><span class="time num">1</span></h1>
     <h6>Now:<i id="time"></i></h6>
     <h6> <span class="text-success g_d"></span><span class="time">days</span><span class="text-primary g_h"></span><span class="time">hours</span><span class="text-info g_m"></span><span class="time">minutes</span> <span class="text-danger g_s"></span><span class="time">seconds</span> of annual leave distance</h6>
     <h6> <span class="text-success s_d"></span><span class="time">days</span><span class="text-primary s_h"></span><span class="time">hours</span><span class="text-info s_m"></span><span class="time">minutes</span> <span class="text-danger s_s"></span><span class="time">seconds</span> of the Spring Festival distance</h6>
@@ -36,6 +37,9 @@
     </div>
     <ul class="pagination">
     </ul>
+    <div class="form-group">
+        <button class="btn btn-group-lg btn-danger" onclick="location.href='Web/login/login.html'">新玩法</button>
+    </div>
 </div>
 
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
@@ -44,6 +48,28 @@
 <script src="js/dist/util.js"></script>
 <script src="js/dist/collapse.js"></script>
 <script type="text/javascript">
+    var num = 0;
+
+//    var APP_ID = 'BYylv8btVNAVElmU5ENFlavz-gzGzoHsz';
+//    var APP_KEY = 'Sc7893dU3jlOwzMFx3kq1CrQ';
+//
+//    AV.init({
+//        appId: APP_ID,
+//        appKey: APP_KEY
+//    });
+
+//    var TestObject = AV.Object.extend('TestObject');
+//    var TestObject = AV.Object.extend('wordbook');
+//    var testObject = new TestObject();
+//    testObject.get()
+//    testObject.save({
+//        name: 'name2',
+//        desc: 'desc2'
+//    }).then(function() {
+//        alert('LeanCloud works!');
+//    }).catch(function(err) {
+//        alert('error:' + err);
+//    });
 
     $(function () {
         setInterval(function () {
@@ -78,9 +104,11 @@
             $(".g_h").html(h);
             $(".g_m").html(m);
             $(".g_s").html(s);
+            $(".num").html(num++);
 
         },1000);
         var location = getLocation();
+//        var location = getRequest();
         console.log(location);
         var href = location[0];
         var p = location[1];
@@ -177,7 +205,24 @@
         if(url[url.lastIndexOf("/") + 1] != "?")
             url+="?";
         url = url.split("&");
+//        if(url.lastIndexOf("?") == -1){
+//            url =
+//        }
         return url;
+    }
+
+    function getRequest() {
+
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for(var i = 0; i < strs.length; i ++) {
+                theRequest[strs[i].split("=")[0]]=(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
     }
 
 </script>
