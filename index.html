@@ -13,7 +13,7 @@
         }
     </style>
 </head>
-<body>
+<body ondblclick="direct()">
 <div class="main">
     <span id="show"></span><span>s</span>
     <div id="font">
@@ -28,6 +28,9 @@
     let t = document.getElementById("t");
     let e = document.getElementById("e");
     let holiday = new Date(2017,0,23,0,0,0);
+    function direct() {
+        location.href = "index2.html"
+    }
     function randFont() {
         return Math.random()  + 12
     }
@@ -50,7 +53,7 @@
             t.style.color = randColor();
             e.style.color = randColor();
         }
-        show.innerHTML = Math.floor(time / 1000) + "." + time % 1000;
+        show.innerHTML = Math.floor(time / 1000) + "." + (time % 1000);
     },1)
 </script>
 </body>
