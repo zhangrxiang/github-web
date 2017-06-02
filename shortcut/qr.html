@@ -16,8 +16,9 @@
     <div class="col-lg-6">
         <div class="form-group">
             <label for="qr-value">Please input value</label>
-            <textarea class="form-control" id="qr-value" placeholder="input" rows="8" v-model="qr"></textarea>
-            <p>{{qr}}</p>
+            <textarea class="form-control" id="qr-value" placeholder="input..." rows="8" v-model="qr"></textarea>
+            <p hidden>{{qr}}</p>
+            <p hidden>{{qr2}}</p>
         </div>
     </div>
     <div class="col-lg-6">
@@ -28,18 +29,26 @@
 </html>
 <script type="text/javascript">
     var input = window.document.documentURI;
-
-    var vu = new Vue({
-        el:"#qr-box",
-        data:{
-            qr:input
+    var qrcode = null;
+    new Vue({
+        el: "#qr-box",
+        data: {
+            qr: input
+        },
+        computed: {
+            qr2: function () {
+                createQr(this.qr);
+                return this.qr
+            }
         }
     });
-    var qrcode = new QRCode(document.getElementById("qr-code"), {
-        width: 200,
-        height: 200
-    });
-    qrcode.makeCode(input);
-    //qrcode.clear()
-
+    createQr(input);
+    function createQr(val) {
+        document.getElementById("qr-code").innerText = '';
+        qrcode = new QRCode(document.getElementById("qr-code"), {
+            width: 200,
+            height: 200
+        });
+        qrcode.makeCode(val);
+    }
 </script>
