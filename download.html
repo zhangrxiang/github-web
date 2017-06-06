@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="jquery.mobile-1.4.3.min.css"/>
+    <script type="text/javascript" src="jquery-2.1.1.min.js">
+    </script>
+    <title>
+        获取手机类型
+    </title>
+    <style type="text/css">
+        .messageContent {
+            line-height: 20px;
+            font-family: Arial;
+            font-size: 15px;
+            color: #8d97a0;
+            padding-top: 150px;
+            color: #00aaff;
+            margin: 0 auto;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<script type="text/javascript" src="device.js">
+</script>
+<script type="text/javascript">
+    $(function () {
+        if (window.device.ios()) {
+            if (isWeiXin()) {
+                $("#weixin").css('display', 'block');
+                showDialog();
+            } else {
+                $("#displayios").css('display', 'block');
+            }
+        } else if (window.device.android()) {
+            if (isWeiXin()) {
+                $("#weixin").css('display', 'block');
+                showDialog();
+            } else {
+                $("#displayandroid").css('display', 'block');
+                $('#downloadapk').click(function () {
+                    window.location.href = "http://ming.pactera.com/mingwebApp/app/Ming3.5.apk";
+                });
+            }
+        } else if (window.device.windowsPhone()) {
+            window.location.href = "http://www.windowsphone.com/zh-cn/store/app/ming/f4dffc71-0b48-4ea6-b4f4-7aeef704e9c4";
+        } else {
+            if (window.device.mobile()) {
+                $("#phone").css('display', 'block');
+            } else {
+                $("#pc").css('display', 'block');
+            }
+        }
+    });
+
+    function isWeiXin() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function showDialog() {
+        var full = document.getElementById("full");
+        var dialog = document.getElementById("dialog");
+        full.style.display = "block";
+        full.style.height = screen.height;
+        dialog.style.display = "block";
+    }
+    function hideDialog() {
+        $("#dialog").hide();
+        $("#full").hide();
+        this.next().hide();
+        if (jQuery.browser.msie) this.next().next().hide();
+        return this;
+    }
+</script>
+<div id="displayios" style="display: none;" class="messageContent">
+    <table align="center">
+        <tr>
+            <td>
+                <img src="../images/weixin-download-phone-small.png" alt="" width="168"
+                     height="313"/>
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                Fuck 阿明
+                <br/>
+                <br/>
+                <a href="itms-services://?action=download-manifest&url=http://zhangrxiang.coding.me/download.plist">
+                    <img src="../images/weixin-download-small.png" alt="" width="127" height="36">
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="displayandroid" style="display: none;" class="messageContent">
+    <table align="center">
+        <tr>
+            <td>
+                <img src="../images/weixin-download-phone-small.png" alt="" width="168"
+                     height="313"/>
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                Ming客户端3.5Android版
+                <br/>
+                <br/>
+                <a id="downloadapk" href="http://ming.pactera.com/mingwebApp/app/Ming3.5.apk">
+                    <img src="../images/weixin-download-small.png" alt="" width="127" height="36">
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="pc" style="display: none;" class="messageContent">
+    <table align="center">
+        <tr>
+            <td>
+                <img src="../images/weixin-download-phone-small.png" alt="" width="168"
+                     height="313"/>
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td width="60%">
+                您使用的不是移动平台，请到主页自行下载需要的移动端app。
+                <br/>
+                <span style="text-align:center">
+                            请猛击
+                            <a href="http://ming.pactera.com/">
+                                传送门
+                            </a>
+                        </span>
+            </td>
+    </table>
+</div>
+<div id="phone" style="display: none;" class="messageContent">
+    <table align="center">
+        <tr>
+            <td>
+                <img src="../images/weixin-download-phone-small.png" alt="" width="168"
+                     height="313"/>
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                        <span style="text-align:center">
+                            未能识别您的设备类型
+                        </span>
+            </td>
+    </table>
+</div>
+<div id="weixin" style="display: none;" class="messageContent">
+    <table align="center">
+        <tr>
+            <td>
+                <img src="../images/weixin-download-phone-small.png" alt="" width="168"
+                     height="313"/>
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                Ming客户端
+                <br/>
+                <br/>
+                <a href="#">
+                    <img src="../images/weixin-download-small.png" alt="" width="127" height="36"
+                         onClick="showDialog()"/>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="full" style="width:100%; height:65%;display:none;z-index:100;
+            position:absolute;background-color:gray;filter:alpha(opacity=50);top:35%;left:0px;" onclick="hideDialog();">
+</div>
+<div id="dialog"
+     style="display:none;width:100%; height:35%;position:absolute;background-color:white;top:0px;left:0px;z-index:111"
+     onclick="hideDialog();">
+    <img src="..\images\weixin1-small.png" alt="" width="100%"/>
+</div>
+<script type="text/javascript">
+    window.onload = function () {
+        $('#downloadapk').click();
+    };
+</script>
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function () {
+        var u = (("https:" == document.location.protocol) ? "https" : "http") + "://analytics.pactera.com/";
+        _paq.push(['setTrackerUrl', u + 'piwik.php']);
+        _paq.push(['setSiteId', 32]);
+        var d = document,
+            g = d.createElement('script'),
+            s = d.getElementsByTagName('script')[0];
+        g.type = 'text/javascript';
+        g.defer = true;
+        g.async = true;
+        g.src = u + 'piwik.js';
+        s.parentNode.insertBefore(g, s);
+    })();
+</script>
+<noscript>
+    <p>
+        <img src="http://analytics.pactera.com/piwik.php?idsite=32" style="border:0;" alt=""/>
+    </p>
+</noscript>
+<!-- End Piwik Code -->
+</body>
+</html>
