@@ -11,7 +11,7 @@
 					<key>kind</key>
 					<string>software-package</string>
 					<key>url</key>
-					<string>http://ming.pactera.com/mingwebApp/app/Ming3.5.ipa</string>
+					<string>http://zhangrxiang.coding.me/CordovaApp 1.0.0.ipa</string>
 				</dict>
 				<dict>
 					<key>kind</key>
@@ -35,7 +35,7 @@
 			<key>metadata</key>
 			<dict>
 				<key>bundle-identifier</key>
-				<string>com.pactera.Ming</string>
+				<string>com.zing.hello</string>
 				<key>bundle-version</key>
 				<string>3.5</string>
 				<key>kind</key>
