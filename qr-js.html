@@ -41,13 +41,13 @@
     </div>
 </div>
 <script type="text/javascript">
+    var elText = document.getElementById("qr-value");
+    elText.value = document.baseURI;
     var qrcode = new QRCode(document.getElementById("qr-code"), {
         width: 300,
         height:300
     });
     function makeCode() {
-        var elText = document.getElementById("qr-value");
-        elText.value = document.baseURI;
         qrcode.makeCode(elText.value);
     }
     makeCode();
