@@ -36,15 +36,15 @@
                 </li>
             </ul>
         </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="form-group text-center" id="qr-code"></div>
+        </div>
         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
             <div class="form-group">
-                <textarea class="form-control" id="qr-value" placeholder="input..." rows="8" v-model="qr"></textarea>
+                <input class="form-control" id="qr-value" placeholder="input..." rows="8" v-model="qr"/>
                 <p hidden>{{qr}}</p>
                 <p hidden>{{qr2}}</p>
             </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            <div class="form-group text-center" id="qr-code"></div>
         </div>
     </div>
 </div>
@@ -69,8 +69,8 @@
     function createQr(val) {
         document.getElementById("qr-code").innerText = '';
         qrcode = new QRCode(document.getElementById("qr-code"), {
-            width: 200,
-            height: 200
+            width: 300,
+            height: 300
         });
         qrcode.makeCode(val);
     }
