@@ -5,14 +5,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
     <script type="text/javascript" src="qrcodejs/jquery.min.js"></script>
-    <script type="text/javascript" src="qrcodejs/qrcode.js"></script>
+    <script type="text/javascript" src="qrcodejs/jquery.qrcode.js"></script>
+    <script type="text/javascript" src="qrcodejs/qrcode2.js"></script>
     <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <div class="container" id="qr-box">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="h2 text-center text-info">二维码(js)</div>
+            <div class="h2 text-center text-info">二维码(jquery)</div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <ul class="list-group">
@@ -23,7 +24,7 @@
                     <a class="center-block" href="qr-js.html">二维码(js)</a>
                 </li>
                 <li class="list-group-item">
-                    <a class="center-block" href="qr-jq.html">二维码(jquery)</a>
+                    <a class="center-block" href="qr-js.html">二维码(jquery)</a>
                 </li>
                 <li class="list-group-item">
                     <a class="center-block" href="index.html">返回</a>
@@ -36,27 +37,22 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            <div class="text-center" id="qr-code"></div>
+            <p>Render in table</p>
+            <div id="qrcodeTable"></div>
+            <p>Render in canvas</p>
+            <div id="qrcodeCanvas"></div>
         </div>
     </div>
 </div>
 <script type="text/javascript">
-    var qrcode = new QRCode(document.getElementById("qr-code"), {
-        width: 300,
-        height:300
+    //jQuery('#qrcode').qrcode("this plugin is great");
+    var text = jQuery("#qr-value").val(document.baseURI).val();
+    jQuery('#qrcodeTable').qrcode({
+        render	: "table",
+        text	: text
     });
-    function makeCode() {
-        var elText = document.getElementById("qr-value");
-        elText.value = document.baseURI;
-        qrcode.makeCode(elText.value);
-    }
-    makeCode();
-    $("#qr-value").on("blur", function () {
-        makeCode();
-    }).on("keydown", function (e) {
-        if (e.keyCode === 13) {
-            makeCode();
-        }
+    jQuery('#qrcodeCanvas').qrcode({
+        text	: text
     });
 </script>
 </body>
