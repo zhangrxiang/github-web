@@ -11,9 +11,11 @@
 <body>
 <div class="container" id="qr-box">
     <div class="row">
-        <div class="col-lg-12 h2 text-center text-info">二维码(js)</div>
-        <div class="col-lg-3">
-            <ul>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="h2 text-center text-info">二维码(js)</div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <ul class="list-group">
                 <li class="list-group-item">
                     <a class="center-block" href="qr-vue.html">二维码(vue)</a>
                 </li>
@@ -25,14 +27,14 @@
                 </li>
             </ul>
         </div>
-        <div class="col-lg-5">
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
             <div class="form-group">
                 <input class="form-control" id="qr-value" placeholder="input..."  v-model="qr"/>
                 <p hidden>{{qr}}</p>
                 <p hidden>{{qr2}}</p>
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-sm-12">
             <div class="form-group text-center" id="qr-code"></div>
         </div>
     </div>
