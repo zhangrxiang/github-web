@@ -32,26 +32,26 @@
                 </li>
             </ul>
         </div>
-        <div class="col-lg-5 col-md-5">
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
             <div class="form-group">
                 <textarea class="form-control" placeholder="encodeURI" rows="8" v-model="encode_uri"
                           v-on:keyup.enter="keyUp('encodeURI')"></textarea>
             </div>
         </div>
-        <div class="col-lg-5 col-md-5">
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
             <div class="form-group">
                     <textarea class="form-control" readonly rows="8" placeholder="encodeURI"
                               v-bind:title="encode_uri_result" v-model="encode_uri_result"
                               v-on:click="keyUp('encodeURI')"></textarea>
             </div>
         </div>
-        <div class="col-lg-5 col-md-5">
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
             <div class="form-group">
                 <textarea class="form-control" placeholder="decodeURI" rows="8" v-model="decode_uri"
                           v-on:keyup.enter="keyUp('decodeURI')"></textarea>
             </div>
         </div>
-        <div class="col-lg-5 col-md-5">
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
             <div class="form-group">
                     <textarea class="form-control" readonly rows="8" placeholder="decodeURI"
                               v-bind:title="decode_uri_result" v-model="decode_uri_result"
