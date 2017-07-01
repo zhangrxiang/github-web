@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>encodeURI and decodeURI</title>
+    <title>unicode</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
     <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="vue/vue.min.js"></script>
@@ -11,7 +11,7 @@
 <div class="container" id="box">
     <div class="row">
         <div class="col-lg-12">
-            <div class="h2 text-center text-info">encodeURI and decodeURI</div>
+            <div class="h2 text-center text-info">unicode</div>
         </div>
         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
             <ul class="list-group">
@@ -28,7 +28,7 @@
                     <a class="center-block" href="url-XXcode.html">encodeURI and decodeURI</a>
                 </li>
                 <li class="list-group-item">
-                    <a class="center-block" href="unicode.html">unicode</a>
+                    <a class="center-block active" href="unicode.html">unicode</a>
                 </li>
                 <li class="list-group-item">
                     <a class="center-block" href="index.html">返回</a>
@@ -37,28 +37,28 @@
         </div>
         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
             <div class="form-group">
-                <textarea class="form-control" placeholder="encodeURI" rows="8" v-model="encode_uri"
-                          v-on:keyup.enter="keyUp('encodeURI')"></textarea>
+                <textarea class="form-control" placeholder="charCodeAt" rows="8" v-model="char_code_at"
+                          v-on:keyup.enter="keyUp('charCodeAt')"></textarea>
             </div>
         </div>
         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
             <div class="form-group">
-                    <textarea class="form-control" readonly rows="8" placeholder="encodeURI"
-                              v-bind:title="encode_uri_result" v-model="encode_uri_result"
-                              v-on:click="keyUp('encodeURI')"></textarea>
+                    <textarea class="form-control" readonly rows="8" placeholder="fromCharCode"
+                              v-bind:title="char_code_at_result" v-model="char_code_at_result"
+                              v-on:click="keyUp('charCodeAt')"></textarea>
             </div>
         </div>
         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
             <div class="form-group">
-                <textarea class="form-control" placeholder="decodeURI" rows="8" v-model="decode_uri"
-                          v-on:keyup.enter="keyUp('decodeURI')"></textarea>
+                <textarea class="form-control" placeholder="fromCharCode" rows="8" v-model="from_char_code"
+                          v-on:keyup.enter="keyUp('fromCharCode')"></textarea>
             </div>
         </div>
         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
             <div class="form-group">
-                    <textarea class="form-control" readonly rows="8" placeholder="decodeURI"
-                              v-bind:title="decode_uri_result" v-model="decode_uri_result"
-                              v-on:click="keyUp('decodeURI')"></textarea>
+                    <textarea class="form-control" readonly rows="8" placeholder="charCodeAt"
+                              v-bind:title="from_char_code_result" v-model="from_char_code_result"
+                              v-on:click="keyUp('fromCharCode')"></textarea>
             </div>
         </div>
     </div>
@@ -67,20 +67,29 @@
     new Vue({
         el: "#box",
         data: {
-            encode_uri: '',
-            encode_uri_result: '',
-            decode_uri: '',
-            decode_uri_result: ''
+            char_code_at: '',
+            char_code_at_result: '',
+            from_char_code: '',
+            from_char_code_result: ''
         },
         methods: {
             keyUp: function (type) {
                 try {
-                    if (type === 'encodeURI') {
-                        this.encode_uri_result = encodeURI(this.encode_uri);
-                        return this.encode_uri_result
+                    if (type === 'charCodeAt') {
+                        this.char_code_at_result = '';
+                        for (var i = 0; i < this.char_code_at.length; i++) {
+                            this.char_code_at_result += "\\u" + (this.char_code_at).charCodeAt(i).toString(16);
+                        }
+                        return this.char_code_at_result
                     } else {
-                        this.decode_uri_result = decodeURI(this.decode_uri);
-                        return this.decode_uri_result
+                        this.from_char_code_result = '';
+                        var arr = this.from_char_code.split('\\u');
+                        for (i = 1; i < arr.length; i++) {
+//                            if(arr[i].toString(16) < 0xffff){
+                                this.from_char_code_result += String.fromCharCode(parseInt("0x" +arr[i].toString(16)));
+//                            }
+                        }
+                        return this.from_char_code_result
                     }
                 } catch (error) {
                     alert(error);
