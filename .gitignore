@@ -1,7 +1,1 @@
-# Created by .ignore support plugin (hsz.mobi)
-.gitignore
-.idea/misc.xml
-.idea/modules.xml
-.idea/workspace.xml
-.idea/zhangrxiang.github.io.iml
-.idea/markdown-navigator.xml
+/.idea

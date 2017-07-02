@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="qrcodejs/qrcode.min.js"></script>
+    <script type="text/javascript" src="vue/vue.min.js"></script>
+</head>
+<body>
+<header>
+
+</header>
+<div class="container" id="qr-box">
+    <div class="col-lg-12 h2 text-center text-info">二维码</div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="qr-value">Please input value</label>
+            <textarea class="form-control" id="qr-value" placeholder="input..." rows="8" v-model="qr"></textarea>
+            <p hidden>{{qr}}</p>
+            <p hidden>{{qr2}}</p>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group text-center" id="qr-code"></div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    var input = window.document.documentURI;
+    var qrcode = null;
+    new Vue({
+        el: "#qr-box",
+        data: {
+            qr: input
+        },
+        computed: {
+            qr2: function () {
+                createQr(this.qr);
+                return this.qr
+            }
+        }
+    });
+    createQr(input);
+    function createQr(val) {
+        document.getElementById("qr-code").innerText = '';
+        qrcode = new QRCode(document.getElementById("qr-code"), {
+            width: 200,
+            height: 200
+        });
+        qrcode.makeCode(val);
+    }
+</script>

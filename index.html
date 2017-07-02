@@ -1,60 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>放假倒计时😄</title>
-    <style>
-        html{height: 100%}
-        .main{
-            margin-top: 33%;
-            height: 33%;
-            font-size: 5em;
-            text-align: center;
-        }
-    </style>
+    <title>主页</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="qrcodejs/qrcode.min.js"></script>
+    <script type="text/javascript" src="vue/vue.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 </head>
-<body ondblclick="direct()">
-<div class="main">
-    <span id="show"></span><span>s</span>
-    <div id="font">
-        <span id="l">L</span><span id="e">e</span><span id="f">f</span><span id="t">t</span>😄
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h2 class="text-center text-primary">MENU</h2>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<script type="text/javascript">
-    let show = document.getElementById("show");
-    let font = document.getElementById("font");
-    let l = document.getElementById("l");
-    let f = document.getElementById("f");
-    let t = document.getElementById("t");
-    let e = document.getElementById("e");
-    let holiday = new Date(2017,0,23,0,0,0);
-    function direct() {
-        location.href = "index2.html"
-    }
-    function randFont() {
-        return Math.random()  + 12
-    }
-    function randColor() {
-//        var g=Math.floor(Math.random()*256);
-//        var r=Math.floor(Math.random()*256);
-//        var b=Math.floor(Math.random()*256);
-//        return "rgb("+r+','+g+','+b+")";//所有方法的拼接都可以用ES6新特性`其他字符串{$变量名}`替换
-        return '#'+Math.floor(Math.random()*16777215).toString(16);
-//        return '#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).substr(-6);
-//        return '#'+(Math.random()*0xffffff<<0).toString(16);
-    }
-    setInterval(function () {
-        let now = new Date();
-        let time = holiday.getTime() - now.getTime();
-        if(time % 500 == 0){
-            show.style.color = randColor();
-            l.style.color = randColor();
-            f.style.color = randColor();
-            t.style.color = randColor();
-            e.style.color = randColor();
-        }
-        show.innerHTML = Math.floor(time / 1000) + "." + (time % 1000);
-    },1)
-</script>
 </body>
 </html>
