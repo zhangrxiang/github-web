@@ -18,7 +18,7 @@ window.onload = function () {
             },
             {
                 title: "encodeURI and decodeURI",
-                url: "url-XXcode.html.html"
+                url: "url-XXcode.html"
             },
             {
                 title: "unicode",
@@ -35,13 +35,16 @@ window.onload = function () {
         ];
         var html = "";
         for (var i in menu) {
-            console.log(menu[i]);
+            if(window.location.href.includes(menu[i].url)){
+                html += "<li class=\"list-group-item list-group-item-info\">" +
+                    "<a class=\"center-block\" href=\"" + menu[i].url + "\">" + menu[i].title + "</a>" +
+                    "</li>";
+            }else {
             html += "<li class=\"list-group-item\">" +
                 "<a class=\"center-block\" href=\"" + menu[i].url + "\">" + menu[i].title + "</a>" +
                 "</li>";
+            }
         }
-        console.log(document.querySelector("ul"));
-        console.log(document.getElementsByClassName("list-group").item(0));
         var list = document.querySelector("ul");
         list.innerHTML = html;
     })();
