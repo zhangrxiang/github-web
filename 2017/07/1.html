@@ -3,6 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" src="../../lib/FileSaver.js/FileSaver.js"></script>
+    <script type="text/javascript">
+        try {
+            var file = new File(["Hello, world!"], "hello world.txt", {type: "text/plain;charset=utf-8"});
+            console.log(file);
+            console.log(saveAs(file));
+        } catch (error) {
+            console.log(error)
+        }
+    </script>
 </head>
 <body>
 
