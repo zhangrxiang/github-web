@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script type="text/javascript">
+    function print(value, data) {
+        if (getType(data) === "String") {
+            document.writeln(value.fontcolor("#123ecc") + "-->".bold().big().fontsize(3).fontcolor("#c256cc") + data + "<br/>")
+        }else if (data instanceof Object){
+            for (var i in data){
+                document.writeln(i.fontcolor("#123ecc") + "-->".bold().big().fontsize(3).fontcolor("#c256cc") + data[i] + "<br/>")
+            }
+        }
+    }
+
+
+    print("location.protocol", location.protocol);
+    print("location.hostname", location.hostname);
+    print("location.port", location.port);
+    print("location.host", location.host);
+    print("location.pathname", location.pathname);
+    print("location.href", location.href);
+    print("location.hash", location.hash);
+
+    print("location.host", location.hostname + ":" +location.port);
+    print("url", location.protocol + "//" + location.host + location.pathname);
+
+    print("location",location);
+
+
+    //    数据类型判断之 typeof
+    var a = "iamstring.";
+    var b = 222;
+    var c = [1, 2, 3];
+    var d = new Date();
+    var e = function () {
+        return null;
+    };
+    var f = function () {
+        this.name = "22";
+    };
+
+    //    1、最常见的判断方法：typeof
+    //typeof返回的类型都是字符串形式
+    console.log(typeof a);
+    console.log(typeof b);
+    console.log(typeof c);
+    console.log(typeof d);
+    console.log(typeof e);
+    console.log(typeof f);
+
+    //   2, 判断已知对象类型的方法： instanceof
+    //todo ???
+    console.log(a instanceof String);//false
+    console.log(b instanceof Number);//false
+    console.log(c instanceof Array);
+    console.log(d instanceof Object);
+    console.log(e instanceof Function);
+
+    //    3、根据对象的constructor判断： constructor
+    console.log(a.constructor === String);
+    console.log(b.constructor === Number);
+    console.log(c.constructor === Array);
+    console.log(d.constructor === Date);
+    console.log(d.constructor === Object);//false
+    console.log(e.constructor === Function);
+
+    //    4、通用但很繁琐的方法： prototype
+    console.log(Object.prototype.toString.call(a) === '[object String]')
+    console.log(Object.prototype.toString.call(b) === '[object Number]')
+
+
+    //  5
+    function isType(value, type) {
+        var reg = new RegExp("^\\[object " + type + "\\]$", "i");
+        return reg.test(Object.prototype.toString.call(value));
+    }
+
+    console.log(isType(a, "String"));
+
+    function getType(value) {
+        var s = Object.prototype.toString.call(value);
+        // language=JSRegexp
+        return s.match(/\[object (.*?)]/)[1];
+    }
+
+    console.log(getType(a));
+    console.log(getType(b));
+    console.log(getType(c));
+    console.log(getType(d));
+    console.log(getType(e));
+    console.log(getType(f));
+</script>
