@@ -4,3 +4,5 @@ _posts/
 _site
 Gemfile.lock
 *.gem
+Would skip repository lib/FileSaver.js/
+lib/bash.exe.stackdump
