@@ -45,7 +45,4 @@ var data = {
     "related ":"This section contains standards related to all API docblocks.",
     "General":"General considerations for API module parsing",
     "tutorial":"In this tutorial we'll create a module that lists links to content such as blog entries or forum discussions that were created recently (within the last week). This page in the tutorial describes how to create the initial module file and directory.",
-    "":"",
-
-
 };

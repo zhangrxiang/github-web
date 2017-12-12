@@ -103,12 +103,13 @@
 
             }, 1000);
             var location = getLocation();
-            console.log(location);
+            //console.log(location);
             var href = location[0];
             var p = location[1];
             if (p === undefined) {
                 p = "&value=1";
             }
+            console.log(href);
             console.log(p);
             var max = 10;
             try {
@@ -121,16 +122,17 @@
                     var size = Math.ceil(length / 10);
                     var pagination = "";
                     var active = "";
-                    var page = p.split("=")[1];
+                    var page = parseInt(p.split("=")[1], 10);
                     for (var s = 0; s < size; s++) {
                         if ((s + 1) == page) active = "active ";
                         else active = "";
                         pagination +=
-                            '<li class="' + active + 'page-item"><a class="page-link" href="' + href + "&value=" + (s + 1) + '">' + (s + 1) + ' <span class="sr-only">(current)</span></a></li>'
+                            '<li class="' + active + 'page-item"><a class="page-link" href="' +
+                            href + "&value=" + (s + 1) + '">' + (s + 1) +
+                            ' <span class="sr-only">(current)</span></a></li>'
                     }
                     $(".pagination").append(pagination);
-                    //                console.log(size);
-                    var html = get(local, page, max);
+                    var html = get(local, page, max, page);
                     $('#accordion').append(html);
                 } else {
                     alert("no support localStorage!!!!")
@@ -151,27 +153,27 @@
         function get(local, page, max) {
             var html = '';
             console.log("page " + page);
-            for (var j = (page - 1) * 10 + 1; j < page * 10 + 1; j++) {
-                var index = local.key(j.toString());
-                //            console.log("index "+j.toString());
+            for (var j = (page - 1) * 10 + 1; j < page * 10; j++) {
+                var index = parseInt(local.key(j, 10));
                 if (index != null) {
                     var item = local.getItem(index);
-                    //                console.log(item);
-                    var k = item.split("##")[0];
-                    var v = item.split("##")[1];
-                    html +=
-                        '<div class="card">' +
-                        '<div class="card-header">' +
-                        '<h5 class="mb-0">' +
-                        '<i>' + index + '</i> <a style="display: inline-block;width: 90%;" role="button" data-toggle="collapse" data-parent="#accordion" href="#' + k + '">' + k +
-                        '</a>' +
-                        '</h5>' +
-                        '</div>' +
-                        '<div id=' + k + ' class="collapse">' +
-                        '<div class="card-block">' + v +
-                        '</div>' +
-                        '</div>' +
-                        '</div>';
+                    if (item != undefined) {
+                        var k = item.split("##")[0];
+                        var v = item.split("##")[1];
+                        html +=
+                            '<div class="card">' +
+                            '<div class="card-header">' +
+                            '<h5 class="mb-0">' +
+                            '<i>' + parseInt(j, 10) + '</i> <a style="display: inline-block;width: 90%;" role="button" data-toggle="collapse" data-parent="#accordion" href="#' + k + '">' + k +
+                            '</a>' +
+                            '</h5>' +
+                            '</div>' +
+                            '<div id=' + k + ' class="collapse">' +
+                            '<div class="card-block">' + v +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+                    }
                 }
             }
             return html;
