@@ -18,9 +18,9 @@
 
 <body>
     <div class="container">
-        <!-- <h1 class="text-info">Learn English
+        <h1 class="text-danger">English World
             <span id="count" class="text-success time"></span>
-        </h1> -->
+        </h1>
         <h6>Now:
             <i id="time"></i>
         </h6>
@@ -109,8 +109,8 @@
             if (p === undefined) {
                 p = "&value=1";
             }
-            console.log(href);
-            console.log(p);
+            //console.log(href);
+            //console.log(p);
             var max = 10;
             try {
                 if (window.localStorage) {
@@ -123,16 +123,20 @@
                     var pagination = "";
                     var active = "";
                     var page = parseInt(p.split("=")[1], 10);
+                    if (page > size || page < 1)
+                        page = 1;
                     for (var s = 0; s < size; s++) {
-                        if ((s + 1) == page) active = "active ";
-                        else active = "";
+                        if ((s + 1) == page)
+                            active = "active ";
+                        else
+                            active = "";
                         pagination +=
                             '<li class="' + active + 'page-item"><a class="page-link" href="' +
                             href + "&value=" + (s + 1) + '">' + (s + 1) +
                             ' <span class="sr-only">(current)</span></a></li>'
                     }
                     $(".pagination").append(pagination);
-                    var html = get(local, page, max, page);
+                    var html = get(local, page);
                     $('#accordion').append(html);
                 } else {
                     alert("no support localStorage!!!!")
@@ -150,30 +154,29 @@
                 local.setItem((index++).toString(), i + "##" + data[i]);
             }
         }
-        function get(local, page, max) {
+        function get(local, page) {
             var html = '';
-            console.log("page " + page);
-            for (var j = (page - 1) * 10 + 1; j < page * 10; j++) {
+            //console.log("page " + page);
+            for (var j = (page - 1) * 10; j < page * 10; j++) {
                 var index = parseInt(local.key(j, 10));
-                if (index != null) {
+                if (index != undefined) {
                     var item = local.getItem(index);
-                    if (item != undefined) {
-                        var k = item.split("##")[0];
-                        var v = item.split("##")[1];
-                        html +=
-                            '<div class="card">' +
-                            '<div class="card-header">' +
-                            '<h5 class="mb-0">' +
-                            '<i>' + parseInt(j, 10) + '</i> <a style="display: inline-block;width: 90%;" role="button" data-toggle="collapse" data-parent="#accordion" href="#' + k + '">' + k +
-                            '</a>' +
-                            '</h5>' +
-                            '</div>' +
-                            '<div id=' + k + ' class="collapse">' +
-                            '<div class="card-block">' + v +
-                            '</div>' +
-                            '</div>' +
-                            '</div>';
-                    }
+                    var k = item.split("##")[0];
+                    var _k = k.replace(" ", "-");
+                    var v = item.split("##")[1];
+                    html +=
+                        '<div class="card">' +
+                        '<div class="card-header">' +
+                        '<h5 class="mb-0">' +
+                        '<i>' + parseInt(j + 1, 10) + '. </i> <a style="display: inline-block;width: 90%;" role="button" data-toggle="collapse" data-parent="#accordion" href="#' + _k + '">' + k +
+                        '</a>' +
+                        '</h5>' +
+                        '</div>' +
+                        '<div id=' + _k + ' class="collapse">' +
+                        '<div class="card-block">' + v +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
                 }
             }
             return html;
