@@ -13,6 +13,52 @@
         .time {
             margin: 0 5px
         }
+        .word-desc {
+            font-family: "segoe print"
+        }
+
+        .word-val {
+            font-family: "segoe script";
+            color: rgb(156, 61, 61);
+            font-size: 1.5em
+        }
+
+        .s5,
+        .s6,
+        .s7,
+        .s8,
+        .s9,
+        .s10,
+        .s11 {
+            margin: 0px 10px;
+        }
+
+        .s5 {
+            color: dodgerblue;
+        }
+        .s6 {
+            color: orange;
+        }
+
+        .s7 {
+            color: pink;
+        }
+
+        .s8 {
+            color: violet;
+        }
+
+        .s9 {
+            color: deeppink;
+        }
+
+        .s10 {
+            color: crimson;
+        }
+
+        .s11 {
+            color: red;
+        }
     </style>
 </head>
 
@@ -162,18 +208,55 @@
                 if (index != undefined) {
                     var item = local.getItem(index);
                     var k = item.split("##")[0];
-                    var _k = k.replace(" ", "-");
+                    var _k2 = k.substring(0, k.indexOf(" "));
+                    var _k_name = k.split(" ")[0];
+                    var _k_attr = k.split(" ")[1];
+                    var _k_name_style = '';
+                    switch (_k_name.length) {
+                        case 1, 2, 3, 4, 5: {
+                            _k_name_style = "s5";
+                            break;
+                        }
+                        case 6: {
+                            _k_name_style = "s6";
+                            break;
+                        }
+                        case 7: {
+                            _k_name_style = "s7";
+                            break;
+                        }
+                        case 8: {
+                            _k_name_style = "s8";
+                            break;
+                        }
+                        case 9: {
+                            _k_name_style = "s9";
+                            break;
+                        }
+                        case 10: {
+                            _k_name_style = "s10";
+                            break;
+                        }
+                        default:
+                            _k_name_style = "s11";
+                            break;
+
+                    }
+                    console.log(_k_attr);
+                    var _k = k.replace(" ", "-").replace(".", "");
                     var v = item.split("##")[1];
+                    v = v.replace(_k2, "<span class=" + _k_name_style + ">" + _k2 + "</span>");
                     html +=
                         '<div class="card">' +
                         '<div class="card-header">' +
                         '<h5 class="mb-0">' +
-                        '<i>' + parseInt(j + 1, 10) + '. </i> <a style="display: inline-block;width: 90%;" role="button" data-toggle="collapse" data-parent="#accordion" href="#' + _k + '">' + k +
-                        '</a>' +
+                        '<i>' + parseInt(j + 1, 10) + '. </i>' +
+                        '<span style="display: inline-block;width: 90%;" role="button" data-toggle="collapse" data-parent="#accordion" href="#' + _k + '">' + "<span class = " + _k_name_style + ">" + _k_name + "</span>" + _k_attr +
+                        '</span>' +
                         '</h5>' +
                         '</div>' +
                         '<div id=' + _k + ' class="collapse">' +
-                        '<div class="card-block">' + v +
+                        '<div class="card-block word-desc">' + v +
                         '</div>' +
                         '</div>' +
                         '</div>';
