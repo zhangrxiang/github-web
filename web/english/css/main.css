@@ -1,0 +1,51 @@
+.time {
+    margin: 0 5px
+}
+
+.word-desc {
+    font-family: "segoe print"
+}
+
+.word-val {
+    font-family: "segoe script";
+    color: rgb(156, 61, 61);
+    font-size: 1.5em
+}
+
+.s5,
+.s6,
+.s7,
+.s8,
+.s9,
+.s10,
+.s11 {
+    margin: 0px 10px;
+}
+
+.s5 {
+    color: dodgerblue;
+}
+
+.s6 {
+    color: orange;
+}
+
+.s7 {
+    color:darkorchid;
+}
+
+.s8 {
+    color: violet;
+}
+
+.s9 {
+    color: deeppink;
+}
+
+.s10 {
+    color: crimson;
+}
+
+.s11 {
+    color: red;
+}
