@@ -13,6 +13,7 @@
         .time {
             margin: 0 5px
         }
+
         .word-desc {
             font-family: "segoe print"
         }
@@ -36,6 +37,7 @@
         .s5 {
             color: dodgerblue;
         }
+
         .s6 {
             color: orange;
         }
@@ -64,9 +66,9 @@
 
 <body>
     <div class="container">
-        <h1 class="text-danger">English World
+        <h2 class="text-danger">English World
             <span id="count" class="text-success time"></span>
-        </h1>
+        </h2>
         <h6>Now:
             <i id="time"></i>
         </h6>
@@ -213,7 +215,11 @@
                     var _k_attr = k.split(" ")[1];
                     var _k_name_style = '';
                     switch (_k_name.length) {
-                        case 1, 2, 3, 4, 5: {
+                        case 1:
+                        case 2:
+                        case 3:
+                        case 4:
+                        case 5: {
                             _k_name_style = "s5";
                             break;
                         }
@@ -251,7 +257,7 @@
                         '<div class="card-header">' +
                         '<h5 class="mb-0">' +
                         '<i>' + parseInt(j + 1, 10) + '. </i>' +
-                        '<span style="display: inline-block;width: 90%;" role="button" data-toggle="collapse" data-parent="#accordion" href="#' + _k + '">' + "<span class = " + _k_name_style + ">" + _k_name + "</span>" + _k_attr +
+                        '<span style="display: inline-block;width: 80%;" role="button" data-toggle="collapse" data-parent="#accordion" href="#' + _k + '">' + "<span class = " + _k_name_style + ">" + _k_name + "</span>" + _k_attr +
                         '</span>' +
                         '</h5>' +
                         '</div>' +
