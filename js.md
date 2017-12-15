@@ -67,3 +67,37 @@ window.onload = function(){
 　　}
 }
 ```
+
+
+## 原型
+
+
+### `prototype`属性
+> 继承成员被定义的地方
+- 继承的属性和方法是定义在 `prototype` 属性之上的（称之为子命名空间 `(sub namespace)` ）——那些以 `Object.prototype`. 开头的属性，而非仅仅以 `Object`. 开头的属性。`prototype` 属性的值是一个对象，我们希望被原型链下游的对象继承的属性和方法，都被储存在其中。
+- `prototype` 属性指向当前对象的原型对象？其实不是（还记得么？原型对象是一个内部对象，应当使用 `__proto__` 访问）。`prototype` 属性包含（指向）一个对象，你在这个对象中定义需要被继承的成员。
+
+### `create()`
+>  `Object.create()` 方法创建新的对象实例。
+```js
+var person2 = Object.create(person1);
+//create() 实际做的是从指定原型对象创建一个新的对象。这里以 person1 为原型对象创建了 person2 对象。
+
+person2.__proto__
+//返回 person1 对象。
+
+```
+
+### `constructor` 属性
+> 每个对象实例都具有 `constructor` 属性，指向创建该实例的构造器函数。
+```js
+person1.constructor
+person2.constructor
+var person3 = new person1.constructor('Karen', 'Stephenson', 26, 'female', ['playing drums', 'mountain climbing']);
+person3.name.first
+person3.age
+person3.bio()
+
+person1.constructor.name
+
+```
