@@ -12,6 +12,10 @@
     font-size: 1.5em
 }
 
+.s1,
+.s2,
+.s3,
+.s4,
 .s5,
 .s6,
 .s7,
@@ -22,6 +26,10 @@
     margin: 0px 10px;
 }
 
+.s1,
+.s2,
+.s3,
+.s4,
 .s5 {
     color: dodgerblue;
 }
@@ -31,7 +39,7 @@
 }
 
 .s7 {
-    color:darkorchid;
+    color: darkorchid;
 }
 
 .s8 {
