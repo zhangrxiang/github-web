@@ -62,42 +62,7 @@ $(function () {
                 var _k2 = k.substring(0, k.indexOf(" "));
                 var _k_name = k.split(" ")[0];
                 var _k_attr = k.split(" ")[1];
-                var _k_name_style = '';
-                switch (_k_name.length) {
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                    case 5: {
-                        _k_name_style = "s5";
-                        break;
-                    }
-                    case 6: {
-                        _k_name_style = "s6";
-                        break;
-                    }
-                    case 7: {
-                        _k_name_style = "s7";
-                        break;
-                    }
-                    case 8: {
-                        _k_name_style = "s8";
-                        break;
-                    }
-                    case 9: {
-                        _k_name_style = "s9";
-                        break;
-                    }
-                    case 10: {
-                        _k_name_style = "s10";
-                        break;
-                    }
-                    default:
-                        _k_name_style = "s11";
-                        break;
-
-                }
-                console.log(_k_attr);
+                var _k_name_style = "s" + _k_name.length;
                 var _k = k.replace(" ", "-").replace(".", "");
                 var v = item.split("##")[1];
                 v = v.replace(_k2, "<span class=" + _k_name_style + ">" + _k2 + "</span>");
