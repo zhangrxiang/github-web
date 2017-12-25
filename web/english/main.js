@@ -62,7 +62,7 @@ $(function () {
                 var _k2 = k.substring(0, k.indexOf(" "));
                 var _k_name = k.split(" ")[0];
                 var _k_attr = k.split(" ")[1];
-                var _k_name_style = "s" + _k_name.length > 10 ? "11":_k_name.length;
+                var _k_name_style = "s" + (_k_name.length > 10 ? "11":_k_name.length);
                 var _k = k.replace(" ", "-").replace(".", "");
                 var v = item.split("##")[1];
                 v = v.replace(_k2, "<span class=" + _k_name_style + ">" + _k2 + "</span>");
