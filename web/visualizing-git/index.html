@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<title>Visualizing Git</title>
-<script src="js/vendor/jquery.js"></script>
-<script src="js/vendor/jquery-ui.min.js"></script>
-<script data-main="js/main" src="js/vendor/require.min.js"></script>
-<link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/1140.css">
-<link rel="stylesheet" href="css/explaingit.css">
-<link rel="stylesheet" href="css/jquery-ui.min.css">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>Visualizing Git</title>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/jquery-ui.min.js"></script>
+    <script data-main="js/main" src="js/vendor/require.min.js"></script>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/1140.css">
+    <link rel="stylesheet" href="css/explaingit.css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
 </head>
 <body>
 
 <div id="ExplainGitZen-Container" style="display:none">
     <div class="playground-container">
-      <pre id='last-command' style='display: none;'></pre>
+        <pre id='last-command' style='display: none;'></pre>
     </div>
 </div>
 
@@ -40,92 +40,92 @@
 </svg>
 
 <script type="text/javascript">
-require(['explaingit', 'demos'], function (explainGit, demos) {
-    function ready(fn) {
-      if (document.readyState != 'loading'){
-        fn();
-      } else {
-        document.addEventListener('DOMContentLoaded', fn);
-      }
-    }
-
-    function clearSavedState () {
-      if (window.localStorage) {
-        window.localStorage.removeItem('git-viz-snapshot')
-      }
-    }
-
-    function cleanupDom () {
-      $('.svg-container.remote-container').remove()
-    }
-
-    function clean () {
-      clearSavedState()
-      cleanupDom()
-    }
-
-    function cleanHash (hash) {
-      return hash.replace(/^#/, '')
-    }
-
-    function findDemo (demos, name) {
-      return demos.filter(function (d) {
-        return d.key === name
-      })[0]
-    }
-
-    function copyDemo (demo) {
-      // make a deep copy
-      return JSON.parse(JSON.stringify(demo))
-    }
-
-    var lastDemo = findDemo(demos, cleanHash(window.location.hash)) || demos[0]
-
-    ready(function () {
-      window.onhashchange = function () {
-        var demo = findDemo(demos, cleanHash(window.location.hash)) || lastDemo
-        if (demo) {
-          lastDemo = demo
-          document.getElementById('last-command').textContent = ""
-          clean()
-          open()
+    require(['explaingit', 'demos'], function (explainGit, demos) {
+        function ready(fn) {
+            if (document.readyState !== 'loading') {
+                fn();
+            } else {
+                document.addEventListener('DOMContentLoaded', fn);
+            }
         }
-      }
 
-      open()
-    })
+        function clearSavedState() {
+            if (window.localStorage) {
+                window.localStorage.removeItem('git-viz-snapshot')
+            }
+        }
 
-    function open() {
-      explainGit.reset();
+        function cleanupDom() {
+            $('.svg-container.remote-container').remove()
+        }
 
-      var savedState = null
-      if (window.localStorage) {
-        savedState = JSON.parse(window.localStorage.getItem('git-viz-snapshot') || 'null')
-      }
+        function clean() {
+            clearSavedState();
+            cleanupDom()
+        }
 
-      var initial = Object.assign(copyDemo(lastDemo), {
-        name: 'Zen',
-        height: '100%',
-        initialMessage: lastDemo.message,
-        undoHistory: savedState,
-        hvSavedState: savedState && savedState.stack[savedState.pointer].hv,
-        ovSavedState: savedState && savedState.stack[savedState.pointer].ov
-      })
+        function cleanHash(hash) {
+            return hash.replace(/^#/, '')
+        }
 
-      explainGit.open(initial);
-    }
+        function findDemo(demos, name) {
+            return demos.filter(function (d) {
+                return d.key === name
+            })[0]
+        }
 
-    window.resetVis = function () {
-      if (confirm('This will reset your visualization. Are you sure?')) {
-        clean()
-        open()
-      }
-    }
+        function copyDemo(demo) {
+            // make a deep copy
+            return JSON.parse(JSON.stringify(demo))
+        }
 
-    window.pres = function () {
-      document.getElementById('last-command').style.display = 'block'
-    }
-});
+        var lastDemo = findDemo(demos, cleanHash(window.location.hash)) || demos[0];
+
+        ready(function () {
+            window.onhashchange = function () {
+                var demo = findDemo(demos, cleanHash(window.location.hash)) || lastDemo;
+                if (demo) {
+                    lastDemo = demo;
+                    document.getElementById('last-command').textContent = "";
+                    clean();
+                    open()
+                }
+            };
+
+            open()
+        });
+
+        function open() {
+            explainGit.reset();
+
+            var savedState = null;
+            if (window.localStorage) {
+                savedState = JSON.parse(window.localStorage.getItem('git-viz-snapshot') || 'null')
+            }
+
+            var initial = Object.assign(copyDemo(lastDemo), {
+                name: 'Zen',
+                height: '100%',
+                initialMessage: lastDemo.message,
+                undoHistory: savedState,
+                hvSavedState: savedState && savedState.stack[savedState.pointer].hv,
+                ovSavedState: savedState && savedState.stack[savedState.pointer].ov
+            });
+
+            explainGit.open(initial);
+        }
+
+        window.resetVis = function () {
+            if (confirm('This will reset your visualization. Are you sure?')) {
+                clean();
+                open()
+            }
+        };
+
+        window.pres = function () {
+            document.getElementById('last-command').style.display = 'block'
+        }
+    });
 </script>
 </body>
 </html>

@@ -1,6 +1,11 @@
 $(function () {
     var data = [
         [
+            `
+            如果ax=N（a>0，且a≠1），那么数x叫做以a为底N的对数，记作x=logaN，读作以a为底N的对数，其中a叫做对数的底数，N叫做真数。
+            `
+        ],
+        [
             "We find ourselves in a rare moment where the citizens of our country and all countries are watching and waiting for us to lead. It's a responsibility that this generation did not ask for, but one that we must accept for the future and our children and our grandchildren. And the strongest democracies flourish from frequent and lively debate, but they endure when people of every background and belief find a way to set aside smaller differences in service of a greater purpose."
         ],
         [
