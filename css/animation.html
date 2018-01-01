@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    .animation {
+        width: 100px;
+    }
+
+    .animation:hover {
+        height: 300px;
+        width: 300px;
+        /*animation: 5s rainbow infinite;*/
+        /*animation: 5s rainbow 2;*/
+        animation: 1s 1s rainbow linear 3 forwards normal;
+
+    }
+
+    /*div:hover {*/
+    /*animation-name: rainbow;*/
+    /*animation-duration: 1s;*/
+    /*animation-timing-function: linear;*/
+    /*animation-delay: 1s;*/
+
+    /*animation-fill-mode:forwards;*/
+    /*（1）none：默认值，回到动画没开始时的状态。*/
+    /*（2）backwards：让动画回到第一帧的状态。*/
+    /*（3）both: 根据animation-direction（见后）轮流应用forwards和backwards规则。*/
+
+    /*animation-direction: normal;*/
+    /*alternate、reverse、alternate-reverse*/
+
+    /*animation-iteration-count: 3;*/
+    /*}*/
+
+    @keyframes rainbow {
+        /*0%可以用from代表，100%可以用to代表*/
+        0% {
+            background: #c00;
+        }
+        50% {
+            background: orange;
+        }
+        100% {
+            background: yellowgreen;
+        }
+    }
+
+    .animation2 {
+        height: 20px;
+        animation: spin 1s linear infinite;
+        animation-play-state: paused;
+        width: 12em;
+        padding: .6em 1em;
+        margin: 5em auto;
+        background: yellowgreen;
+    }
+
+    @keyframes spin {
+        to {
+            -webkit-transform: rotate(1turn);
+        }
+    }
+
+    @-webkit-keyframes spin {
+        to {
+            -webkit-transform: rotate(1turn);
+        }
+    }
+
+    .animation2:hover {
+        animation: spin 1s linear infinite;
+        -webkit-animation: spin 1s linear infinite;
+    }
+
+</style>
+<body>
+<div class="animation">
+    hello
+</div>
+<div class="animation2"></div>
+</body>
+</html>
