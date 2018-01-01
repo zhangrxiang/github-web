@@ -5,78 +5,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"-->
+    <link rel="stylesheet" href="bootstrap.min.css"
           integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <!--<link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet">-->
     <link href="quill.snow.css" rel="stylesheet">
-    <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet">
+    <!--<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet">-->
+    <link href="default.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/KaTeX/0.9.0-alpha2/katex.min.css" rel="stylesheet">
     <title>Hello, world!</title>
 </head>
 <body>
 <div class="container">
     <div id="accordion" role="tablist">
-        <div class="card">
-            <div class="card-header" role="tab" id="headingOne">
-                <h5 class="mb-0">
-                    <a data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true"
-                       aria-controls="collapseOne">
-                        Collapsible Group Item #1
-                    </a>
-                </h5>
-            </div>
-
-            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne"
-                 data-parent="#accordion">
-                <div class="card-body">
-                    <div id="editor" style="min-height: 200px">
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header" role="tab" id="headingTwo">
-                    <h5 class="mb-0">
-                        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" role="button"
-                           aria-expanded="false"
-                           aria-controls="collapseTwo">
-                            Collapsible Group Item #2
-                        </a>
-                    </h5>
-                </div>
-                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
-                     data-parent="#accordion">
-                    <div class="card-body">
-                        <!--<div id="editor" style="min-height: 200px">-->
-                        <!--</div>-->
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header" role="tab" id="headingThree">
-                    <h5 class="mb-0">
-                        <a class="collapsed" data-toggle="collapse" href="#collapseThree" role="button"
-                           aria-expanded="false" aria-controls="collapseThree">
-                            Collapsible Group Item #3
-                        </a>
-                    </h5>
-                </div>
-                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree"
-                     data-parent="#accordion">
-                    <div class="card-body">
-                        <!--<div id="editor" style="min-height: 200px">-->
-                        <!--</div>-->
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
+</div>
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
 <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"-->
-        <!--integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"-->
-        <!--crossorigin="anonymous"></script>-->
+<!--integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"-->
+<!--crossorigin="anonymous"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
@@ -88,24 +38,49 @@
 <script src="quill.js"></script>
 <script>
     $(function () {
-
-        $.get("./data/1.json",{},function (ret) {
-            let quill = new Quill('#editor', {
-                theme: 'snow',
-                modules: {
-                    'formula': true,          // Include formula module
-                    'history': {          // Enable with custom configurations
-                        'delay': 2500,
-                        'userOnly': true
-                    },
-                    'syntax': true
-                }
-            });
-            // console.log(ret.title);
-            console.log(ret.desc);
-            console.log(JSON.parse(ret.desc))
-            quill.setContents(JSON.parse(ret.desc));
-            console.log( quill.getContents());
+        $.get("./data/all.json", {}, function (ret) {
+            let html = '';
+            for (let title of ret) {
+                html += '<div class="card">'
+                html += '<div class="card-header" role="tab" id="' + title + "-" + title + '">'
+                html += '<h5 class="mb-0">'
+                html += '<a data-toggle="collapse" href="#' + title + '" role="button" aria-expanded="true"'
+                html += 'aria-controls="' + title + '">'
+                html += title
+                html += '</a>'
+                html += '</h5>'
+                html += '</div>'
+                html += '<div id="' + title + '" class="collapse" role="tabpanel" aria-labelledby="' + title + "-" + title + '"'
+                html += 'data-parent="#accordion">'
+                html += '<div class="card-body">'
+                // html += title + title + title + title + title + title + title + title + title + title + title + title + title + title + title + title + title + title + title;
+                html+='<div id="editor'+title+'" style="min-height: 200px"></div>'
+                html += '</div>'
+                html += '</div>'
+                html += '</div>'
+            }
+            $('#accordion').append(html)
+        });
+        // $('div[class="card-header"]').on('click',function () {
+        //     console.log("haha");
+        // })
+        $('a[data-toggle="collapse"]').click(function () {
+            console.log("hehe")
+        })
+        $.get("./data/1.json", {}, function (ret) {
+            // let quill = new Quill('#editor', {
+            //     theme: 'snow',
+            //     modules: {
+            //         'formula': true,          // Include formula module
+            //         'history': {          // Enable with custom configurations
+            //             'delay': 2500,
+            //             'userOnly': true
+            //         },
+            //         'syntax': true
+            //     }
+            // });
+            // quill.setContents(JSON.parse(ret.desc));
+            // console.log(quill.getContents());
         });
     });
 </script>
