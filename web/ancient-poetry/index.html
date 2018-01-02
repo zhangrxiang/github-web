@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"-->
-    <link rel="stylesheet" href="bootstrap.min.css"
-          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap.min.css">
     <!--<link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet">-->
-    <link href="quill.snow.css" rel="stylesheet">
+    <!--<link href="quill.snow.css" rel="stylesheet">-->
+    <link href="quill.bubble.css" rel="stylesheet">
     <!--<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet">-->
     <link href="default.min.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/KaTeX/0.9.0-alpha2/katex.min.css" rel="stylesheet">
     <title>Hello, world!</title>
 </head>
@@ -53,34 +54,33 @@
                 html += '<div id="' + title + '" class="collapse" role="tabpanel" aria-labelledby="' + title + "-" + title + '"'
                 html += 'data-parent="#accordion">'
                 html += '<div class="card-body">'
-                // html += title + title + title + title + title + title + title + title + title + title + title + title + title + title + title + title + title + title + title;
-                html+='<div id="editor'+title+'" style="min-height: 200px"></div>'
+                html += '<div id="editor' + title + '"></div>'
                 html += '</div>'
                 html += '</div>'
                 html += '</div>'
             }
             $('#accordion').append(html)
         });
-        // $('div[class="card-header"]').on('click',function () {
-        //     console.log("haha");
-        // })
-        $('a[data-toggle="collapse"]').click(function () {
-            console.log("hehe")
-        })
-        $.get("./data/1.json", {}, function (ret) {
-            // let quill = new Quill('#editor', {
-            //     theme: 'snow',
-            //     modules: {
-            //         'formula': true,          // Include formula module
-            //         'history': {          // Enable with custom configurations
-            //             'delay': 2500,
-            //             'userOnly': true
-            //         },
-            //         'syntax': true
-            //     }
-            // });
-            // quill.setContents(JSON.parse(ret.desc));
-            // console.log(quill.getContents());
+        $("#accordion").click(function (event) {
+            let e = event || window.event;
+            let target = e.target || e.srcElement;
+            if (target.nodeName.toLowerCase() === 'a') {
+                let name = $(target).attr("aria-controls");
+                let quill = new Quill('#editor' + name, {
+                    theme: 'bubble',
+                    modules: {
+                        'formula': true,
+                        'history': {
+                            'delay': 2500,
+                            'userOnly': true
+                        },
+                        'syntax': true
+                    }
+                });
+                $.get("./data/1.json", {}, function (ret) {
+                    quill.setContents(JSON.parse(ret.desc));
+                });
+            }
         });
     });
 </script>
