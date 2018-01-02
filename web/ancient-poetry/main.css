@@ -2,3 +2,6 @@
     padding: 0;
     transition: 3s height;
 }
+.card-header a{
+    display: block;
+}
