@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script data-main="app" src="../../lib/require.js"></script>
+</head>
+<body>
+<div id="example">
+    <my-component></my-component>
+    <hr>
+    <my-component2></my-component2>
+</div>
+
+<div id="example-2">
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+</div>
+<hr>
+<div id="example-3">
+    <child message="hello!"></child>
+    <input v-model="parentMsg">
+    <br>
+    <child v-bind:message="parentMsg"></child>
+</div>
+<hr>
+<div id="example-4">
+    <ol>
+        <!--
+          现在我们为每个 todo-item 提供 todo 对象
+          todo 对象是变量，即其内容可以是动态的。
+          我们也需要为每个组件提供一个“key”，稍后再
+          作详细解释。
+        -->
+        <todo-item
+                v-for="item in groceryList"
+                v-bind:todo="item"
+                v-bind:key="item.id">
+        </todo-item>
+    </ol>
+</div>
+<hr>
+<div id="example-5">
+    <p>{{ total }}</p>
+    <button-counter v-on:increment="incrementTotal"></button-counter>
+    <button-counter v-on:increment="incrementTotal"></button-counter>
+</div>
+</body>
+</html>
