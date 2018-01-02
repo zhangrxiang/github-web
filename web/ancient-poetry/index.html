@@ -64,8 +64,8 @@
         $("#accordion").click(function (event) {
             let e = event || window.event;
             let target = e.target || e.srcElement;
+            let name = $(target).attr("aria-controls");
             if (target.nodeName.toLowerCase() === 'a') {
-                let name = $(target).attr("aria-controls");
                 let quill = new Quill('#editor' + name, {
                     theme: 'bubble',
                     modules: {
@@ -77,7 +77,7 @@
                         'syntax': true
                     }
                 });
-                $.get("./data/1.json", {}, function (ret) {
+                $.get("./data/"+name+".json", {}, function (ret) {
                     quill.setContents(JSON.parse(ret.desc));
                 });
             }
