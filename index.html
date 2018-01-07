@@ -6,7 +6,7 @@
     <title>主页</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
     <link href="./lib/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <script data-main="lib/index" src="lib/require.js"></script>
+    <script data-main="lib/index" src="lib/require.js" defer async></script>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <h2 class="text-center text-primary col-md-offset-6 col-sm-offset-6 col-xs-offset-6">{{ menu }}</h2>
+                            <h2 class="text-center text-primary col-md-offset-6 col-sm-offset-6 col-xs-offset-6" v-on:click="deleteCache">{{ menu }}</h2>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <canvas id="canvas" style="width:80%;margin-top: 20px; margin-bottom: 10px;" height="100"
