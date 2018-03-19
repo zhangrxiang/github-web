@@ -2,6 +2,24 @@ $(function () {
     var data = [
         [
             `
+            Docker is an open platform for developing, shipping, and running applications. 
+            Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. With Docker,
+            you can manage your infrastructure in the same ways you manage your applications. By taking advantage of Docker’s methodologies for shipping, testing, 
+            and deploying code quickly, you can significantly reduce the delay between writing code and running it in production.
+            `,
+            'What is Docker?'
+
+        ],
+        [
+            `
+            Vagrant creates Virtual Machines in minutes while Docker creates Virtual Containers in seconds.
+            Instead of providing a full Virtual Machines, like you get with Vagrant, Docker provides you lightweight Virtual Containers, that share the same kernel and allow to safely execute independent processes.
+            In addition to the speed, Docker gives tons of features that cannot be achieved with Vagrant.
+            Most importantly Docker can run on Development and on Production (same environment everywhere). While Vagrant is designed for Development only, (so you have to re-provision your server on Production every time).
+            `,'Why Docker not Vagrant!?'
+        ],
+        [
+            `
             如果ax=N（a>0，且a≠1），那么数x叫做以a为底N的对数，记作x=logaN，读作以a为底N的对数，其中a叫做对数的底数，N叫做真数。
             `
         ],
@@ -24,7 +42,8 @@ $(function () {
             chance to work, that will give you the future and old age and security. By the promise of these things, brutes have risen to
             power, but they lie! They do not fulfil their promise, they never will! Dictators free themselves but they enslave the people! Now let us fight to fulfil that promise! Let us fight to free the world, to do away with national barriers, to do away with greed, with hate and intolerance! Let us fight for a world of reason, a world where science and progress will lead to all men's happiness.
             Soldiers - in the name of democracy, let us all unite!!!"`
-        ]
+        ],
+
     ]
     var html = "";
     var length = data.length;
